@@ -1,10 +1,7 @@
 #!/bin/bash
 sudo apt -y update
 sudo apt -y install iptables-persistent netfilter-persistent python3-pip
-
-
 sudo sysctl -w net.ipv4.ip_forward=1
-
 sudo iptables -t nat -A POSTROUTING -o tun0 -j MASQUERADE
 sudo netfilter-persistent save
 sudo systemctl enable netfilter-persistent.service
